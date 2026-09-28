@@ -1,0 +1,43 @@
+{
+  
+  "name": "certchain-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "bcryptjs": "^3.0.3",
+    "drizzle-orm": "^0.45.3",
+    "ethers": "^6.17.0",
+    "html5-qrcode": "^2.3.8",
+    "jose": "^6.2.12",
+    "lucide-react": "^1.47.0",
+    "next": "^14.2.35",
+    "nodemailer": "^10.0.10",
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sonner": "^2.0.8",
+    "typescript": "^5.9.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^8.0.2",
+    "@types/qrcode": "^1.5.6",
+    "autoprefixer": "^10.6.1",
+    "dotenv": "^18.0.1",
+    "drizzle-kit": "^0.31.11",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19"
+  }
+}

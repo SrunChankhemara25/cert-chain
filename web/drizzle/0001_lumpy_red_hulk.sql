@@ -1,0 +1,1 @@
+ALTER TABLE "organizations" ADD COLUMN "auth_provider" text DEFAULT 'password' NOT NULL;

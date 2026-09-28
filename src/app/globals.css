@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* Removes the grey flash on tap — instant native-app feel */
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    /* Respects iPhone home-bar safe area */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  /* Shell only — always pair with an explicit padding utility (p-6, p-4…) */
+  .card {
+    @apply bg-white border border-slate-200 rounded-xl shadow-card;
+  }
+
+  .input {
+    /* h-11 = 44px touch target on phones; text-base (16px) STOPS iOS auto-zoom on focus */
+    @apply w-full h-11 sm:h-10 border border-slate-300 rounded-lg px-3.5 py-2
+      text-base sm:text-sm
+      bg-white text-slate-900 placeholder:text-slate-400
+      focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500
+      transition-colors duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  textarea.input { @apply h-auto min-h-[80px] resize-y; }
+
+  .label { @apply block text-sm font-medium text-slate-700 mb-1.5; }
+  .form-hint { @apply text-xs text-slate-500 mt-1.5; }
+
+  /* Text-style link (works on <a> AND link-styled <button>) */
+  .link {
+    @apply font-medium text-blue-600 hover:text-blue-700 hover:underline rounded-md
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30
+      focus-visible:ring-offset-2 transition-colors duration-150 touch-manipulation;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 h-11 sm:h-10 px-4 py-2
+      bg-blue-600 text-white text-sm font-medium rounded-lg
+      hover:bg-blue-700 active:bg-blue-800 active:scale-[0.99]
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:ring-offset-2
+      transition-all duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none
+      cursor-pointer select-none;
+  }
+  .btn-sm { @apply h-9 sm:h-8 px-3 text-xs rounded-md; }
+  .btn-lg { @apply h-12 sm:h-11 px-6 text-base; }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 h-11 sm:h-10 px-4 py-2
+      border border-slate-300 bg-white text-slate-700 text-sm font-medium rounded-lg
+      hover:bg-slate-50 hover:border-slate-400 active:bg-slate-100
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/30 focus-visible:ring-offset-2
+      transition-all duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 h-11 sm:h-10 px-3 py-2
+      text-slate-600 text-sm font-medium rounded-lg
+      hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/30
+      transition-all duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 h-11 sm:h-10 px-4 py-2
+      bg-red-600 text-white text-sm font-medium rounded-lg
+      hover:bg-red-700 active:bg-red-800
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/30 focus-visible:ring-offset-2
+      transition-all duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none;
+  }
+
+  .btn-danger-outline {
+    @apply inline-flex items-center justify-center gap-2 h-11 sm:h-10 px-4 py-2
+      border border-red-300 bg-white text-red-700 text-sm font-medium rounded-lg
+      hover:bg-red-50 hover:border-red-400 active:bg-red-100
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/30 focus-visible:ring-offset-2
+      transition-all duration-150 touch-manipulation
+      disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none;
+  }
+}
+
+/* ── Motion system (subtle, fast, premium) ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-3px); }
+  40%, 60% { transform: translateX(3px); }
+}
+.animate-slide-up { animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in  { animation: fadeIn 0.2s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.18s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-sheet-up { animation: sheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-shake    { animation: shake 0.4s ease-in-out both; }
